@@ -8,11 +8,17 @@ class Solution:
             fast = nums[nums[fast]]
 
             if slow == fast:
-                break  
-        
-        sloe = nums[0]
-        while slow != sloe:
+                break
+
+        slow = nums[0]
+        while slow != fast:
             slow = nums[slow]
-            sloe = nums[sloe]
-        
-        return sloe
+            fast = nums[fast]
+
+        return slow
+
+
+
+
+
+

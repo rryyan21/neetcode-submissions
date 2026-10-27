@@ -2,23 +2,19 @@ class Solution:
     def maxArea(self, heights: List[int]) -> int:
         left = 0
         right = len(heights) - 1
-        bestArea = 0
-
-        def calcArea(left, right):
-            area = min(heights[left],heights[right]) * (right - left)
-            return area
+        bestArea = -1
         
+        def calcArea(left, right):
+            return ((right-left) * (min(heights[left], heights[right])))
+
         while left < right:
-            curr = calcArea(left, right)
-            bestArea = max(curr, bestArea)
+            currArea = calcArea(left, right)
+            bestArea = max(bestArea, currArea)
 
-            if heights[left] < heights[right]:
-                left += 1
-            else:
+            if heights[left] > heights[right]:
                 right -= 1
-            
+            else:
+                left += 1
+
+        
         return bestArea
-            
-
-
-            
